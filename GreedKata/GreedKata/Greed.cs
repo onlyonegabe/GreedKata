@@ -9,22 +9,25 @@ namespace GreedKata
         public int Score(int[] dice)
         {
             this.dice = dice;
+            int score = 0;
+            score += HasSingleOfSetInputAndItsScore(1, 100);
+            score += HasSingleOfSetInputAndItsScore(5, 50);
 
-            if (HasASingleOne())
+            return score;
+        }
+
+        private int HasSingleOfSetInputAndItsScore(int input, int score)
+        {
+            if (HasASingleOfSetInput(input))
             {
-                return 100;
+                return score;
             }
-
-            if (HasASingleFive())
-            {
-                return 50;
-            }
-
             return 0;
         }
 
-        private bool HasASingleOne() => this.dice.Where(x => x.Equals(1)).Count() == 1;
-
-        private bool HasASingleFive() => this.dice.Where(x => x.Equals(5)).Count() == 1;
+        private bool HasASingleOfSetInput(int input)
+        {
+            return dice.Where(x => x.Equals(input)).Count() == 1;
+        }
     }
 }
