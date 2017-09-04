@@ -10,24 +10,21 @@ namespace GreedKata
         {
             this.dice = dice;
             int score = 0;
-            score += HasSingleOfSetInputAndItsScore(1, 100);
-            score += HasSingleOfSetInputAndItsScore(5, 50);
+            score += GetScoreOfASingleValue(1, 100);
+            score += GetScoreOfASingleValue(5, 50);
 
             return score;
         }
 
-        private int HasSingleOfSetInputAndItsScore(int input, int score)
+        private int GetScoreOfASingleValue(int value, int scoreForSingleValue)
         {
-            if (HasASingleOfSetInput(input))
+            if (DiceHasASingleValueOf(value))
             {
-                return score;
+                return scoreForSingleValue;
             }
             return 0;
         }
 
-        private bool HasASingleOfSetInput(int input)
-        {
-            return dice.Where(x => x.Equals(input)).Count() == 1;
-        }
+        private bool DiceHasASingleValueOf(int input) => dice.Where(x => x.Equals(input)).Count() == 1;
     }
 }
