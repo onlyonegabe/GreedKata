@@ -10,11 +10,17 @@ namespace GreedKata
         {
             this.dice = dice;
             int score = 0;
+            if (HasTripleOnes(dice))
+            {
+                score += 1000;
+            }
             score += GetScoreOfASingleValue(1, 100);
             score += GetScoreOfASingleValue(5, 50);
 
             return score;
         }
+
+        private static bool HasTripleOnes(int[] dice) => dice.Where(x => x.Equals(1)).Count() == 3;
 
         private int GetScoreOfASingleValue(int value, int scoreForSingleValue)
         {
