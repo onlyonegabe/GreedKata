@@ -14,8 +14,12 @@ namespace GreedKata
             {
                 score += 1000;
             }
-            score += GetScoreIfContainsASingle(1, 100);
-            score += GetScoreIfContainsASingle(5, 50);
+            var diceValue = 1;
+            var singleScore = 100;
+            score += GetScoreIfContainsASingle(diceValue, singleScore);
+            diceValue = 5;
+            singleScore = 50;
+            score += GetScoreIfContainsASingle(diceValue, singleScore);
 
             return score;
         }
