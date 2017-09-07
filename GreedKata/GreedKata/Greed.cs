@@ -10,10 +10,24 @@ namespace GreedKata
         {
             this.dice = dice;
             int score = 0;
+            score = GetScoreForTripleCases(score);
+            score = GetScoreForSingleCases(score);
+
+            return score;
+        }
+
+        private int GetScoreForTripleCases(int score)
+        {
             if (HasTripleOnes(dice))
             {
                 score += 1000;
             }
+
+            return score;
+        }
+
+        private int GetScoreForSingleCases(int score)
+        {
             var diceValue = 1;
             var singleScore = 100;
             score += GetScoreIfContainsASingle(diceValue, singleScore);
