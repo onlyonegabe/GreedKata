@@ -23,6 +23,11 @@ namespace GreedKata
                 score += 1000;
             }
 
+            if (HasTripleTwos(dice))
+            {
+                score += 200;
+            }
+
             return score;
         }
 
@@ -38,7 +43,9 @@ namespace GreedKata
             return score;
         }
 
-        private static bool HasTripleOnes(int[] dice) => dice.Where(x => x.Equals(1)).Count() == 3;
+        private bool HasTripleOnes(int[] dice) => dice.Where(x => x.Equals(1)).Count() == 3;
+
+        private bool HasTripleTwos(int[] dice) => dice.Where(x => x.Equals(2)).Count() == 3;
 
         private int GetScoreIfContainsASingle(int value, int scoreForSingleValue)
         {
