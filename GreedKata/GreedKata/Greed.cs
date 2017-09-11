@@ -18,12 +18,12 @@ namespace GreedKata
 
         private int GetScoreForTripleCases(int score)
         {
-            if (HasTripleOnes())
+            if (HasTripleOf(1))
             {
                 score += 1000;
             }
 
-            if (HasTripleTwos())
+            if (HasTripleOf(2))
             {
                 score += 200;
             }
@@ -31,9 +31,7 @@ namespace GreedKata
             return score;
         }
 
-        private bool HasTripleOnes() => dice.Where(x => x.Equals(1)).Count() == 3;
-
-        private bool HasTripleTwos() => dice.Where(x => x.Equals(2)).Count() == 3;
+        private bool HasTripleOf(int value) => dice.Where(x => x.Equals(value)).Count() == 3;
 
         private int GetScoreForSingleCases(int score)
         {
