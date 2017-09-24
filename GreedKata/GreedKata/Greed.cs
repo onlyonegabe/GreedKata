@@ -28,6 +28,11 @@ namespace GreedKata
                 score += 200;
             }
 
+            if (HasTripleOf(3))
+            {
+                score += 300;
+            }
+
             return score;
         }
 
