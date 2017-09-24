@@ -40,25 +40,20 @@ namespace GreedKata
 
         private int GetScoreForSingleCases(int score)
         {
-            var diceValue = 1;
-            var singleScore = 100;
-            score += GetScoreIfContainsASingle(diceValue, singleScore);
-            diceValue = 5;
-            singleScore = 50;
-            score += GetScoreIfContainsASingle(diceValue, singleScore);
+
+            if (HasSingleOf(1))
+            {
+                score += 100;
+            }
+
+            if (HasSingleOf(5))
+            {
+                score += 50;
+            }
 
             return score;
         }
 
-        private int GetScoreIfContainsASingle(int value, int scoreForSingleValue)
-        {
-            if (DiceHasASingleValueOf(value))
-            {
-                return scoreForSingleValue;
-            }
-            return 0;
-        }
-
-        private bool DiceHasASingleValueOf(int input) => dice.Where(x => x.Equals(input)).Count() == 1;
+        private bool HasSingleOf(int value) => dice.Where(x => x.Equals(value)).Count() == 1;
     }
 }
