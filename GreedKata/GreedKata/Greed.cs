@@ -20,17 +20,17 @@ namespace GreedKata
         {
             if (HasTripleOf(1))
             {
-                score += 1000;
+                score = 1000;
             }
 
             if (HasTripleOf(2))
             {
-                score += 200;
+                score = 200;
             }
 
             if (HasTripleOf(3))
             {
-                score += 300;
+                score = 300;
             }
 
             return score;
@@ -43,12 +43,12 @@ namespace GreedKata
 
             if (HasSingleOf(1))
             {
-                score += 100;
+                score = 100;
             }
 
             if (HasSingleOf(5))
             {
-                score += 50;
+                score = 50;
             }
 
             return score;
