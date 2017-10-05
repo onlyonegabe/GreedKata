@@ -63,5 +63,19 @@ namespace GreedKataTests
             dice = new int[] { 2, 4, 4, 4, 2 };
             Assert.AreEqual(400, game.Score(dice));
         }
+
+        [TestMethod]
+        public void TripleFivesScores500()
+        {
+            dice = new int[] { 2, 5, 5, 5, 2 };
+            Assert.AreEqual(500, game.Score(dice));
+        }
+
+        [TestMethod]
+        public void TripleSixesScores600()
+        {
+            dice = new int[] { 2, 6, 6, 6, 2 };
+            Assert.AreEqual(600, game.Score(dice));
+        }
     }
 }
