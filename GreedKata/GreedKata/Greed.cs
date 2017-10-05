@@ -10,42 +10,49 @@ namespace GreedKata
         {
             this.dice = dice;
             int score = 0;
-            score = GetScoreForTripleCases(score);
-            score = GetScoreForSingleCases(score);
+            score = GetScoreForSingleCases();
+            score += GetScoreForTripleCases();
 
             return score;
         }
 
-        private int GetScoreForTripleCases(int score)
+        private int GetScoreForTripleCases()
+        {
+            int score = 0;
+            score += CalculateScoreForTripleOne();
+            score += CaluateScoreForGenericTriples();
+
+            return score;
+        }
+
+        private int CalculateScoreForTripleOne()
         {
             if (HasTripleOf(1))
             {
-                score = 1000;
+                return 1000;
             }
 
-            if (HasTripleOf(2))
+            return 0;
+        }
+
+        private int CaluateScoreForGenericTriples()
+        {
+            for (int i = 2; i <= 6; i++)
             {
-                score = 200;
+                if (HasTripleOf(i))
+                {
+                    return i * 100;
+                }
             }
 
-            if (HasTripleOf(3))
-            {
-                score = 300;
-            }
-
-            if (HasTripleOf(4))
-            {
-                score = 400;
-            }
-
-            return score;
+            return 0;
         }
 
         private bool HasTripleOf(int value) => dice.Where(x => x.Equals(value)).Count() == 3;
 
-        private int GetScoreForSingleCases(int score)
+        private int GetScoreForSingleCases()
         {
-
+            int score = 0;
             if (HasSingleOf(1))
             {
                 score = 100;
