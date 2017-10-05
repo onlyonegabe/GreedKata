@@ -10,47 +10,13 @@ namespace GreedKata
         {
             this.dice = dice;
             int score = 0;
-            score = GetScoreForSingleCases();
-            score += GetScoreForTripleCases();
+            score = GetScoreForSingles();
+            score += GetScoreForTriples();
 
             return score;
         }
 
-        private int GetScoreForTripleCases()
-        {
-            int score = 0;
-            score += CalculateScoreForTripleOne();
-            score += CaluateScoreForGenericTriples();
-
-            return score;
-        }
-
-        private int CalculateScoreForTripleOne()
-        {
-            if (HasTripleOf(1))
-            {
-                return 1000;
-            }
-
-            return 0;
-        }
-
-        private int CaluateScoreForGenericTriples()
-        {
-            for (int i = 2; i <= 6; i++)
-            {
-                if (HasTripleOf(i))
-                {
-                    return i * 100;
-                }
-            }
-
-            return 0;
-        }
-
-        private bool HasTripleOf(int value) => dice.Where(x => x.Equals(value)).Count() == 3;
-
-        private int GetScoreForSingleCases()
+        private int GetScoreForSingles()
         {
             int score = 0;
             if (HasSingleOf(1))
@@ -67,5 +33,39 @@ namespace GreedKata
         }
 
         private bool HasSingleOf(int value) => dice.Where(x => x.Equals(value)).Count() == 1;
+
+        private int GetScoreForTriples()
+        {
+            int score = 0;
+            score += CalculateScoreForTripleOne();
+            score += CalculateScoreForGenericTriples();
+
+            return score;
+        }
+
+        private int CalculateScoreForTripleOne()
+        {
+            if (HasTripleOf(1))
+            {
+                return 1000;
+            }
+
+            return 0;
+        }
+
+        private int CalculateScoreForGenericTriples()
+        {
+            for (int i = 2; i <= 6; i++)
+            {
+                if (HasTripleOf(i))
+                {
+                    return i * 100;
+                }
+            }
+
+            return 0;
+        }
+
+        private bool HasTripleOf(int value) => dice.Where(x => x.Equals(value)).Count() == 3;
     }
 }
